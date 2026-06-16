@@ -1,0 +1,59 @@
+[project]
+name = "moto"
+authors = [{ name = "Gül Sena Altıntaş", email = "gsaltintas@cs.toronto.edu" }, ]
+version = "0.1.0"
+description = "Next gen tokenizer"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "omegaconf>=2.3.0",
+    "pyyaml",
+    "tokenizers>=0.22.1",
+    "torch>=2.9.0",
+    "transformers>=4.57.1",
+    "tiktoken>=0.12.0",
+    "mistralai>=1.9.11",
+    "sentencepiece>=0.2.1",
+    "tokenmonster>=1.1.12",
+    "mistral-common>=1.8.5",
+    "huggingface_hub",
+    "accelerate>=1.12.0",
+    "lm-eval@git+https://github.com/r-three/lm-evaluation-harness@multilingual-tiny-benchmarks",
+    "wandb>=0.24.0",
+    "matplotlib>=3.10.8",
+    "seaborn>=0.13.2",
+    "datasets==4.0.0", # this version necessary for loading flores
+    "jupyter>=1.1.1",
+    "notebook>=7.5.1",
+    "scikit-posthocs>=0.12.0",
+    "tokenization-scorer>=1.1.8",
+    "ffmpy>=1.0.0",
+    "num2words>=0.5.14",
+]
+
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["flexitok", "moto"]
+
+[project.optional-dependencies]
+lingua = ["xformers"]
+dev = ["ipykernel>=7.1.0", "notebook>=7.5.1"]
+conversion = ["blobfile>=3.1.0"]
+
+[dependency-groups]
+apis = [
+    "google-genai",
+]
+
+
+[tool.uv.sources]
+xformers = { index = "pytorch-cu126" }
+torch = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true 
