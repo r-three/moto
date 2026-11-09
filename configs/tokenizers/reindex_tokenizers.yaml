@@ -1,0 +1,31 @@
+tokenizers:
+  # - name: huggingface
+  #   path: CohereLabs/aya-expanse-8b
+  # - name: huggingface
+  #   path: bigscience/bloom
+  - name: huggingface
+    path: Qwen/Qwen3-8B
+  - name: huggingface
+    path: google/byt5-small
+  # - name: huggingface
+  #   path: common-pile/comma-v0.1
+  # - name: huggingface
+  #   path: google/gemma-2-2b
+  # - name: huggingface
+  #   path: gpt2
+  # - name: tiktoken
+  #   path: gpt-4o
+  # - name: huggingface
+  #   path: meta-llama/Llama-3.2-1B
+  # - name: huggingface
+  #   path: google-bert/bert-base-multilingual-cased
+  # - name: huggingface
+  #   path: microsoft/Phi-3-mini-4k-instruct
+  # - name: tekken
+  #   path: tekken
+  # - name: tokenmonster
+  #   path: englishcode-32000-consistent-v1
+  - name: huggingface
+    path: facebook/xglm-564M
+input_dir: /project/def-craffel/gsa/tokenizers/super_mappings/
+hf_upload_repo_prefix: flexitok/reindexed-

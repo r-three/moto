@@ -1,0 +1,12 @@
+# Example --tokenizer_groups file for create_checkpoints.py.
+# Each key is the name of the supertok checkpoint to produce; its value is the
+# list of component tokenizer names whose super_mapping.json (in --vocab_dir)
+# will be unioned to build that checkpoint's embedding/output tables.
+supertok1:
+  - tiktoken/gpt-4o
+  - google-bert/bert-base-multilingual-cased
+  - facebook/xglm-564M
+  - google/gemma-2-2b
+supertok2:
+  - microsoft/Phi-3-mini-4k-instruct
+  - tokenmonster/englishcode-32000-consistent-v1

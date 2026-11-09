@@ -1,0 +1,95 @@
+# The paper's lm-eval tasks (r-three/lingua apps/main/configs/flexitok/eval/eval_base.yaml, generator.add_bos: true).
+# flores200 (internal task) is replaced by flores_plus_moto (tasks/flores_plus, FLORES+ devtest, bits per byte).
+# toksuite_* ship with the pinned lm-eval (r-three moto branch); run them with --tasks paper+toksuite.
+tasks:
+- arc_easy
+- arc_challenge
+- hellaswag
+- piqa
+- boolq
+- commonsense_qa
+- xwinograd_en
+- xwinograd_fr
+- xwinograd_jp
+- xwinograd_pt
+- xwinograd_ru
+- xwinograd_zh
+- xcopa_id
+- xcopa_it
+- xcopa_tr
+- xcopa_vi
+- xcopa_zh
+- xstorycloze_ar
+- xstorycloze_en
+- xstorycloze_es
+- xstorycloze_id
+- xstorycloze_ru
+- xstorycloze_zh
+- paws_de
+- paws_en
+- paws_es
+- paws_fr
+- paws_ja
+- paws_zh
+- hellaswag_ar
+- hellaswag_da
+- hellaswag_de
+- hellaswag_fr
+- hellaswag_hu
+- hellaswag_id
+- hellaswag_it
+- hellaswag_nl
+- hellaswag_pt
+- hellaswag_ru
+- hellaswag_vi
+- hellaswag_es
+- xnli_ar
+- xnli_zh
+- xnli_de
+- xnli_el
+- xnli_en
+- xnli_es
+- xnli_fr
+- xnli_ru
+- xnli_tr
+- xnli_vi
+- flores_plus_moto
+toksuite:
+- toksuite_english
+- toksuite_chinese
+- toksuite_turkish
+- toksuite_italian
+- toksuite_farsi
+- toksuite_math
+- toksuite_stem
+# lm-eval's own MultiBLiMP tasks for the 17 training languages MultiBLiMP 1.0 covers (it has no
+# cmn, ind, jpn, vie); run with --tasks multiblimp_moto (or paper+toksuite+multiblimp_moto)
+multiblimp_moto:
+- multiblimp_arb
+- multiblimp_ces
+- multiblimp_dan
+- multiblimp_deu
+- multiblimp_ell
+- multiblimp_eng
+- multiblimp_fas
+- multiblimp_fra
+- multiblimp_hun
+- multiblimp_ita
+- multiblimp_nld
+- multiblimp_pol
+- multiblimp_por
+- multiblimp_rus
+- multiblimp_spa
+- multiblimp_swe
+- multiblimp_tur
+# the paper's code-switching evals (rebuttal: lingua2 configs/flexitok/rebuttal/eval_*_w_code_switching.yaml):
+# TokSuite zh/fa/it/tr with English mixed in, and CodeMixBench; run with --tasks code_switching
+code_switching:
+- toksuite_chinese_code_language_script_switching
+- toksuite_farsi_code_language_script_switching
+- toksuite_italian_code_language_script_switching
+- toksuite_turkish_code_language_script_switching
+- codemixbench_sa_spaeng
+- codemixbench_truthfulqa_araeng
+- codemixbench_truthfulqa_chieng
+- codemixbench_truthfulqa_spaeng

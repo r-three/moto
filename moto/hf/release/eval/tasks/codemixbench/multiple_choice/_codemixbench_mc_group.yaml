@@ -1,0 +1,26 @@
+group: codemixbench_mc
+task:
+  - codemixbench_mmlu_araeng
+  - codemixbench_mmlu_beneng
+  - codemixbench_mmlu_chieng
+  - codemixbench_mmlu_duteng
+  - codemixbench_mmlu_freeng
+  - codemixbench_mmlu_gereng
+  - codemixbench_mmlu_hineng
+  - codemixbench_mmlu_mareng
+  - codemixbench_mmlu_nepeng
+  - codemixbench_mmlu_spaeng
+  - codemixbench_mmlu_tameng
+  - codemixbench_sa_beneng
+  - codemixbench_sa_hineng
+  - codemixbench_sa_maleng
+  - codemixbench_sa_mareng
+  - codemixbench_sa_nepeng
+  - codemixbench_sa_spaeng
+  - codemixbench_sa_tameng
+  - codemixbench_truthfulqa_araeng
+  - codemixbench_truthfulqa_chieng
+  - codemixbench_truthfulqa_hineng
+  - codemixbench_truthfulqa_spaeng
+metadata:
+  version: 1.0

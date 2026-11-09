@@ -1,24 +1,24 @@
 [project]
-name = "moto"
+name = "moto-tokenizers"
 authors = [{ name = "Gül Sena Altıntaş", email = "gsaltintas@cs.toronto.edu" }, ]
 version = "0.1.0"
-description = "Next gen tokenizer"
+description = "MoTo: Mixture of Tokenizers - modular multilingual tokenization"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "omegaconf>=2.3.0",
     "pyyaml",
-    "tokenizers>=0.22.1",
     "torch>=2.9.0",
-    "transformers>=4.57.1",
+    "transformers>=4.57.4,<5", # <5: 5.x needs huggingface_hub>=1.0, which datasets==4.0.0 does not support; >=4.57.4: earlier 4.57 call the Hub API when loading a tokenizer offline
     "tiktoken>=0.12.0",
     "mistralai>=1.9.11",
     "sentencepiece>=0.2.1",
     "tokenmonster>=1.1.12",
     "mistral-common>=1.8.5",
-    "huggingface_hub",
+    "huggingface_hub<1.0", # transformers 4.x and datasets 4.0.0 need hub 0.x
     "accelerate>=1.12.0",
-    "lm-eval@git+https://github.com/r-three/lm-evaluation-harness@multilingual-tiny-benchmarks",
+    "lm-eval @ git+https://github.com/r-three/lm-evaluation-harness.git@2c03f05e", # moto branch (0.4.12.dev0): ships the toksuite_* tasks
+    "tokenizer-intrinsic-evals @ git+https://github.com/cimeister/tokenizer-intrinsic-evals.git@7d03a61c", # TokEval (import name: tokenizer_analysis), used by moto/tokenizer_intrinsic_metrics/tokeval
     "wandb>=0.24.0",
     "matplotlib>=3.10.8",
     "seaborn>=0.13.2",
@@ -29,6 +29,7 @@ dependencies = [
     "tokenization-scorer>=1.1.8",
     "ffmpy>=1.0.0",
     "num2words>=0.5.14",
+    "tokenizers>=0.22,<0.23", # transformers 4.57 caps tokenizers at 0.23.0; git main (0.23.x) forces transformers 5
 ]
 
 [build-system]
@@ -36,11 +37,11 @@ requires = ["setuptools>=61.0.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["flexitok", "moto"]
+packages = ["moto"]
 
 [project.optional-dependencies]
 lingua = ["xformers"]
-dev = ["ipykernel>=7.1.0", "notebook>=7.5.1"]
+dev = ["ipykernel>=7.1.0", "notebook>=7.5.1", "scipy"]
 conversion = ["blobfile>=3.1.0"]
 
 [dependency-groups]
@@ -56,4 +57,4 @@ torch = { index = "pytorch-cu126" }
 [[tool.uv.index]]
 name = "pytorch-cu126"
 url = "https://download.pytorch.org/whl/cu126"
-explicit = true 
+explicit = true

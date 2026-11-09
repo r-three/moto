@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+wheels/
+.venv/
+.ipynb_checkpoints/
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Artifacts that should not be committed
+*.safetensors
+*.model
+*.tgz
+wandb/
+outputs/
+out/
+results/
+trained_tokenizers/
+llama_moto_output/
+
+# Local scratch (cleanup leftovers)
+_to_delete/
+
+# Generated paper figures/tables (the hand-made diagrams directly in paper/figures/ stay tracked)
+paper/figures/*/

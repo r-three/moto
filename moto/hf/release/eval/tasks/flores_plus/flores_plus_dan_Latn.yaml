@@ -1,0 +1,3 @@
+include: _flores_plus_template_yaml
+task: flores_plus_dan_Latn
+dataset_name: dan_Latn

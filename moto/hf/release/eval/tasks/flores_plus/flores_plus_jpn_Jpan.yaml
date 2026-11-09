@@ -1,0 +1,3 @@
+include: _flores_plus_template_yaml
+task: flores_plus_jpn_Jpan
+dataset_name: jpn_Jpan

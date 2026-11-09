@@ -1,0 +1,26 @@
+# --tokenizer_groups file for create_supervocab_for_llama_and_moto_v3_seed_111.sh
+# group1: llama alone. group2: the union of all 8k_v3 tokenizers.
+llama:
+  - flexitok/llama-3.2-1b-tokenizer
+supertok_8k_v3:
+  - flexitok/bpe_ltr_arb_Arab_8000_v3
+  - flexitok/bpe_ltr_ces_Latn_8000_v3
+  - flexitok/bpe_ltr_cmn_Hani_8000_v3
+  - flexitok/bpe_ltr_dan_Latn_8000_v3
+  - flexitok/bpe_ltr_deu_Latn_8000_v3
+  - flexitok/bpe_ltr_ell_Grek_8000_v3
+  - flexitok/bpe_ltr_fas_Arab_8000_v3
+  - flexitok/bpe_ltr_fra_Latn_8000_v3
+  - flexitok/bpe_ltr_fw_edu_8000_v3
+  - flexitok/bpe_ltr_hun_Latn_8000_v3
+  - flexitok/bpe_ltr_ind_Latn_8000_v3
+  - flexitok/bpe_ltr_ita_Latn_8000_v3
+  - flexitok/bpe_ltr_jpn_Jpan_8000_v3
+  - flexitok/bpe_ltr_nld_Latn_8000_v3
+  - flexitok/bpe_ltr_pol_Latn_8000_v3
+  - flexitok/bpe_ltr_por_Latn_8000_v3
+  - flexitok/bpe_ltr_rus_Cyrl_8000_v3
+  - flexitok/bpe_ltr_spa_Latn_8000_v3
+  - flexitok/bpe_ltr_swe_Latn_8000_v3
+  - flexitok/bpe_ltr_tur_Latn_8000_v3
+  - flexitok/bpe_ltr_vie_Latn_8000_v3

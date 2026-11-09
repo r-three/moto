@@ -1,0 +1,48 @@
+# Base config for Llama-MoTo pipeline.
+# Override individual fields on the CLI or in a derived config.
+
+base_tokenizer: meta-llama/Meta-Llama-3.1-8B
+
+# FLORES language codes to process.
+# Full list: arb_Arab ces_Latn cmn_Hani dan_Latn deu_Latn ell_Grek fas_Arab
+#            fra_Latn hin_Deva hun_Latn ind_Latn ita_Latn jpn_Jpan kor_Hang
+#            nld_Latn pol_Latn por_Latn rus_Cyrl spa_Latn swe_Latn tur_Latn vie_Latn
+languages: []
+
+# Local training data (JSONL): data_dir/{lang_code}/*.jsonl  {"text": "..."}
+# Falls back to FLORES when a language has no local data.
+data_dir: null
+
+# HuggingFace corpus dataset (used for PickyBPE + extend_merges if no local data)
+corpus_dataset: flexitok/flores-21langs
+corpus_split: devtest
+corpus_text_column: text
+
+# Maximum sentences per language for corpus scanning (0 = unlimited)
+max_sentences: 0
+
+# PickyBPE: minimum token frequency to keep in pruned vocab
+min_token_freq: 5
+
+# Additional BPE merge operations to learn per language
+extra_merges: 8000
+
+# Active vocabulary budget per forward pass
+active_vocab_size: 32000
+
+output_dir: llama_moto_output
+seed: 42
+
+run_stages:
+  - byte_fallback_analysis
+  - picky_bpe
+  - multiplicity_tokens
+  - extend_merges
+  - build_moto
+
+hf:
+  publish_to_hf: false
+  hf_repo_id: null
+  collections: []
+  commit_message: null
+  public: false

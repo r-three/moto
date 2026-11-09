@@ -1,0 +1,3 @@
+include: _flores_plus_template_yaml
+task: flores_plus_ita_Latn
+dataset_name: ita_Latn

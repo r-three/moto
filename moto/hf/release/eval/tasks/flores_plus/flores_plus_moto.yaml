@@ -1,0 +1,30 @@
+group: flores_plus_moto
+# the 21 MoTo training languages (fw_edu = eng_Latn, cmn_Hani = cmn_Hans, fas_Arab = pes_Arab)
+task:
+  - flores_plus_eng_Latn
+  - flores_plus_arb_Arab
+  - flores_plus_ces_Latn
+  - flores_plus_cmn_Hans
+  - flores_plus_dan_Latn
+  - flores_plus_deu_Latn
+  - flores_plus_ell_Grek
+  - flores_plus_pes_Arab
+  - flores_plus_fra_Latn
+  - flores_plus_hun_Latn
+  - flores_plus_ind_Latn
+  - flores_plus_ita_Latn
+  - flores_plus_jpn_Jpan
+  - flores_plus_nld_Latn
+  - flores_plus_pol_Latn
+  - flores_plus_por_Latn
+  - flores_plus_rus_Cyrl
+  - flores_plus_spa_Latn
+  - flores_plus_swe_Latn
+  - flores_plus_tur_Latn
+  - flores_plus_vie_Latn
+aggregate_metric_list:
+  - metric: bits_per_byte
+    aggregation: mean
+    weight_by_size: false
+metadata:
+  version: 1.0

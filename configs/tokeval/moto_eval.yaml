@@ -1,0 +1,84 @@
+# python -m moto.tokenizer_intrinsic_metrics.tokeval.run_moto_tokeval config=configs/tokeval/moto_eval.yaml
+#
+# Everything is streamed from the Hub. The evaluated languages are read from the first moto_repo
+# setting's routing table; missing FLORES+ files are fetched into corpus_dir (gated: `hf auth login`).
+corpus_dir: /path/to/data/flores_plus_devtest
+corpus_split: devtest
+samples_per_lang: 1000
+output_dir: results/tokeval
+use_builtin_math_data: true
+# languages: [eng_Latn, tur_Latn]     # optional: restrict the languages
+# measurement_config: /abs/path/to/tokeval/configs/text_measurement_config_bytes.json
+
+# Parity under fixed denominators: label -> setting whose English counts divide every row.
+parity_lang: eng_Latn
+parity_denominators:
+  english_moto: moto_1b     # the MoTo mixture's English tokenizer
+  llama: llama32            # Llama on English; Llama's own row is Llama's own parity
+
+settings:
+  # ---- MoTo family: release repos with a routing table (oracle routing, each FLORES+ language -> its tokenizer).
+  # The first one fixes the evaluated languages (21). moto-1b-v1 (random routing) has the same tokenizers as
+  # moto-1b-v1-oracle, so it is not repeated.
+  moto_1b:
+    mode: moto_repo
+    repo: r-three-moto/moto-1b
+    default_language: eng_Latn   # routes TokEval's language-free math corpus
+  moto_v2:
+    mode: moto_repo
+    repo: r-three-moto/moto-1b-v2
+    default_language: eng_Latn
+  moto_v1_oracle:               # MoTo-GPT4
+    mode: moto_repo
+    repo: r-three-moto/moto-1b-v1-oracle
+    default_language: eng_Latn
+  moto_v1_oracle_reg:           # MoTo-GPT4-Reg.
+    mode: moto_repo
+    repo: r-three-moto/moto-1b-v1-oracle-reg
+    default_language: eng_Latn
+  moto_16k_v2:
+    mode: moto_repo
+    repo: r-three-moto/moto-1b-16k-v2
+    default_language: eng_Latn
+  moto_script:
+    mode: moto_repo
+    repo: r-three-moto/moto-1b-script
+    default_language: eng_Latn
+  moto_16k_plus_llama:
+    mode: moto_repo
+    repo: r-three-moto/moto-1b-16k-plus-llama
+    default_language: eng_Latn
+  # ---- single tokenizers (streamed from the Hub). Llama-Albert shares the Llama tokenizer; Demoto's
+  # tokenizer is pinned to a revision (flexitok/bpe_ltr_monolithic_moto), which TokEval's loader cannot take.
+  llama32:
+    mode: single
+    class: huggingface
+    path: meta-llama/Llama-3.2-1B   # gated: needs access on your HF token
+  llama_43k:
+    mode: single
+    class: huggingface
+    path: r-three-moto/moto-1b-baseline-llama-43k
+  llama_bpe_dropout:
+    mode: single
+    class: huggingface
+    path: r-three-moto/moto-1b-baseline-llama-bpe-dropout
+  joint_mbpe_gpt4:
+    mode: single
+    class: huggingface
+    path: r-three-moto/moto-1b-mbpe-gpt4
+  joint_mbpe_gpt4_323k:
+    mode: single
+    class: huggingface
+    path: r-three-moto/moto-1b-mbpe-gpt4-323k
+  joint_mbpe_boundless:
+    mode: single
+    class: huggingface
+    path: r-three-moto/moto-1b-mbpe-boundless
+  byt5:
+    mode: single
+    class: huggingface
+    path: r-three-moto/moto-1b-baseline-byt5
+  parity_aware_bpe:
+    mode: single
+    class: huggingface
+    path: r-three-moto/moto-1b-baseline-parity-aware-bpe

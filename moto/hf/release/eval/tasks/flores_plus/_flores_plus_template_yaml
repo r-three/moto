@@ -1,0 +1,15 @@
+# FLORES+ (openlanguagedata/flores_plus, CC BY-SA 4.0, gated: accept its terms on the Hub and
+# log in). Never re-hosted here. One document per sentence, scored as rolling loglikelihood.
+dataset_path: openlanguagedata/flores_plus
+output_type: loglikelihood_rolling
+test_split: devtest
+doc_to_text: ""
+doc_to_target: "{{text}}"
+process_results: !function utils.process_results
+should_decontaminate: false
+metric_list:
+  - metric: bits_per_byte
+  - metric: byte_perplexity
+  - metric: word_perplexity
+metadata:
+  version: 1.0
